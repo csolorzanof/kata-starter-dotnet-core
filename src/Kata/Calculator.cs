@@ -7,7 +7,11 @@ namespace Kata
             if(string.IsNullOrEmpty(s))
                 return 0;
 
-            return 1;
+            string[] numbers = s.Split(",");
+            if (numbers.Length == 1)
+                return int.Parse(numbers[0]);
+            
+            return int.Parse(numbers[0])+int.Parse(numbers[1]);
         }
     }
 }
