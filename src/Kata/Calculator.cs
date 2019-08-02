@@ -14,7 +14,8 @@ namespace Kata
             if (s.StartsWith("//"))
             {
                 var components = s.Split("\n");
-                delimeters = new[] {components[0].Replace("//", "")};
+                delimeters = new[] {components[0].Replace("//", "").Replace("[","").Replace("]","")};
+                
                 s = components[1];
             }
 
