@@ -21,6 +21,10 @@ namespace Kata
             if (array.Length == 1)
                 return array.First();
 
+            var negatives = array.Where(x => x < 0).ToArray();
+            if (negatives.Any())
+                throw new Exception($"negatives not allowed: {negatives.First()}");
+
             return array.Sum();
         }
     }
