@@ -17,7 +17,9 @@ namespace Kata
                 s = s.Split("\n")[1];
             }
                         
-            var array = s.Split(separator, StringSplitOptions.None).Select(int.Parse).ToArray();
+            var array = s.Split(separator, StringSplitOptions.None).Select(int.Parse)
+                .Where(x=> x<1001)
+                .ToArray();
             if (array.Length == 1)
                 return array.First();
 
