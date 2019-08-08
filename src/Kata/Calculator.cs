@@ -2,14 +2,9 @@ namespace Kata
 {
     public class Calculator
     {
-        public object Action()
+        public int Add(string s = "")
         {
-            throw new System.NotImplementedException();
-        }
-
-        public int Add()
-        {
-            return -1;
+            return 0;
         }
     }
 }
