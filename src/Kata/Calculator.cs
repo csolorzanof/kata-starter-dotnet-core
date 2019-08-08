@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 namespace Kata
@@ -8,7 +9,7 @@ namespace Kata
         {
             if (string.IsNullOrEmpty(s))
                 return 0;
-            var array = s.Split(",").Select(int.Parse).ToArray();
+            var array = s.Split(new []{",", "\n"}, StringSplitOptions.None).Select(int.Parse).ToArray();
             if (array.Length == 1)
                 return array.First();
 
