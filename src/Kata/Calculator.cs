@@ -13,7 +13,7 @@ namespace Kata
             var separator = new []{",", "\n"};
             if (s.StartsWith("//"))
             {
-                separator = new[] {s.Split("\n")[0].Replace("//", "")};
+                separator = new[] {s.Split("\n")[0].Replace("//", "").Replace("[","").Replace("]","")};
                 s = s.Split("\n")[1];
             }
                         
