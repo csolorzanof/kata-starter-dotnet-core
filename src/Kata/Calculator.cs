@@ -12,7 +12,7 @@ namespace Kata
             if (array.Length == 1)
                 return array.First();
 
-            return array.First() + array.Last();
+            return array.Sum();
         }
     }
 }
