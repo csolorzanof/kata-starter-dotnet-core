@@ -10,12 +10,8 @@ namespace Kata
                 return 0;
 
             
-            var numbers = s.Split(",").ToArray().Select(x=> int.Parse(x));
-            if (numbers.Count() == 1)
-            {
-                return numbers.First();
-            }
-            return numbers.First() + numbers.Last();
+            var numbers = s.Split(",").ToArray().Select(int.Parse).ToArray();
+            return numbers.Sum();
         }
     }
 }
