@@ -23,8 +23,10 @@ namespace Kata
                 return 1;
 
             var negatives = numbers.Where(x => x < 0);
-            if(negatives.Any())
-                throw new Exception($"negatives not allowed: -2");
+            if (negatives.Any())
+            {
+                throw new Exception($"negatives not allowed: " + string.Join(", ",negatives));
+            }
 
             return numbers.Sum();
         }
