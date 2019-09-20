@@ -10,24 +10,34 @@ namespace Kata
             if(string.IsNullOrEmpty(s))
                 return 0;
 
-            var separator = new[]{",", "\n"};
-            if (s.StartsWith("//"))
-            {
-                var parts = s.Split("\n");
-                separator = new[] {parts[0].Replace("//", "").Replace("[","").Replace("]","")};
-                s = parts[1];
-            }
-            var numbers = s.Split(separator, StringSplitOptions.None).Select(int.Parse).Where(x=> x<=1000);
+            if (!s.StartsWith("//")) return SumAllValidNumbers(s, new[] {",", "\n"});
+            
+            var parts = s.Split("\n");
+            var input = parts[1];
+                
+            var separator = parts[0].Replace("//", "")
+                .Replace("[","")
+                .Split("]");
+                
+            return SumAllValidNumbers(input, separator);
+        }
 
-            var negatives = numbers.Where(x => x < 0);
+        static int SumAllValidNumbers(string input, string[] separator)
+        {
+            var numbers = input.Split(separator, StringSplitOptions.None).Select(int.Parse).Where(x => x <= 1000).ToArray();
+
+            ValidateNumbers(numbers);
+
+            return numbers.Sum();
+        }
+
+        static void ValidateNumbers(int[] numbers)
+        {
+            var negatives = numbers.Where(x => x < 0).ToArray();
             if (negatives.Any())
             {
                 throw new Exception($"negatives not allowed: {string.Join(", ", negatives)}");
             }
-            if(numbers.Count()==1)
-                return 1;
-
-            return numbers.Sum();
         }
     }
 }
